@@ -112,7 +112,7 @@ func FindPeople(c *gin.Context) {
 func UpdatePerson(c *gin.Context) {
   // Get the person to be updated
   var person models.Person
-  if err := models.DB.Where("id = ?", c.Param("id")).First(&person).Error; err != nil {
+  if err := models.DB.First(&person, "id = ?", c.Param("id")).Error; err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
     return
   }

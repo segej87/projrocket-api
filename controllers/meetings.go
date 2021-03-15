@@ -48,7 +48,7 @@ func CreateMeeting(c *gin.Context) {
     return
   }
 
-  // Create person
+  // Create meeting
   meeting := models.Meeting{CreatedBy: input.CreatedBy, Title: input.Title, Description: input.Description, StartDate: input.StartDate, EndDate: input.EndDate, Location: input.Location}
   models.DB.Create(&meeting)
 
@@ -101,9 +101,9 @@ func FindMeetings(c *gin.Context) {
 // PATCH /meetings/:id
 // Update a meeting
 func UpdateMeeting(c *gin.Context) {
-  // Get the person to be updated
+  // Get the meeting to be updated
   var meeting models.Meeting
-  if err := models.DB.Where("id = ?", c.Param("id")).First(&meeting).Error; err != nil {
+  if err := models.DB.First(&meeting, "id = ?", c.Param("id")).Error; err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
     return
   }

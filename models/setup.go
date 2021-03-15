@@ -12,7 +12,7 @@ var DB *gorm.DB
 
 func (base *Base) BeforeCreate(scope *gorm.Scope) (err error) {
   base.ID = uuid.NewV4()
-  
+
   return
 }
 
@@ -26,7 +26,7 @@ func ConnectDatabase() {
   database.AutoMigrate(&User{})
   database.AutoMigrate(&Person{})
   database.AutoMigrate(&Meeting{})
+  database.AutoMigrate(&Note{})
 
   DB = database
 }
-
