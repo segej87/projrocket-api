@@ -17,10 +17,24 @@ func main() {
     c.JSON(http.StatusOK, gin.H{"data": "welcome to projrocket api!"})    
   })
   
+  // Connect to the database
   models.ConnectDatabase()
   
+  // Users
+  r.GET("/users", controllers.FindUsers)
+  r.POST("/users", controllers.CreateUser)
+  
+  // People
   r.GET("/people", controllers.FindPeople)
   r.POST("/people", controllers.CreatePerson)
+  r.PATCH("/people/:id", controllers.UpdatePerson)
+  r.DELETE("/people/:id", controllers.DeletePerson)
+  
+  // Meetings
+  r.GET("/meetings", controllers.FindMeetings)
+  r.POST("/meetings", controllers.CreateMeeting)
+  r.PATCH("/meetings/:id", controllers.UpdateMeeting)
+  r.DELETE("/meetings/:id", controllers.DeleteMeeting)
 
   r.Run()
 }
