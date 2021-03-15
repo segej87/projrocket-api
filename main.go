@@ -19,7 +19,8 @@ func main() {
   
   models.ConnectDatabase()
   
-  r.GET("/people", controllers.FindBooks)
+  r.GET("/people", controllers.FindPeople)
+  r.POST("/people", controllers.CreatePerson)
 
   r.Run()
 }
