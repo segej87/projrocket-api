@@ -6,10 +6,7 @@ import (
   "net/http"
   "github.com/gin-gonic/gin"
   "github.com/segej87/projrocket-api/models"
-  //"time"
   "github.com/satori/go.uuid"
-  //"fmt"
-  //"strings"
 )
 
 type CreateNoteInput struct {

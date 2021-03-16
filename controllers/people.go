@@ -8,8 +8,6 @@ import (
   "github.com/segej87/projrocket-api/models"
   "time"
   "github.com/satori/go.uuid"
-  //"fmt"
-  //"strings"
 )
 
 type CreatePersonInput struct {
