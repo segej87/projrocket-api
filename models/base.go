@@ -13,4 +13,3 @@ type Base struct {
   CreatedAt time.Time    `form:"created_at" json:"created_at"`
   UpdatedAt time.Time    `form:"updated_at" json:"updated_at"`
 }
-

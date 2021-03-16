@@ -12,8 +12,8 @@ import (
 
 type CreatePersonInput struct {
   CreatedBy  uuid.UUID `form:"created_by" json:"created_by" binding:"required"`
-  FirstName  string    `form:"firstname" json:"firstname" binding:"required"`
-  LastName   string    `form:"lastname" json:"lastname" binding:"required"`
+  FirstName  string    `form:"first_name" json:"first_name" binding:"required"`
+  LastName   string    `form:"last_name" json:"last_name" binding:"required"`
   Email      string    `form:"email" json:"email"`
   Phone      string    `form:"phone" json:"phone"`
   Birthday   time.Time `form:"birthday" json:"birthday"`
@@ -24,8 +24,8 @@ type CreatePersonInput struct {
 
 type UpdatePersonInput struct {
   CreatedBy  uuid.UUID `form:"created_by" json:"created_by"`
-  FirstName  string    `form:"firstname" json:"firstname"`
-  LastName   string    `form:"lastname" json:"lastname"`
+  FirstName  string    `form:"first_name" json:"first_name"`
+  LastName   string    `form:"last_name" json:"last_name"`
   Email      string    `form:"email" json:"email"`
   Phone      string    `form:"phone" json:"phone"`
   Birthday   time.Time `form:"birthday" json:"birthday"`
@@ -35,8 +35,8 @@ type UpdatePersonInput struct {
 }
 
 type SearchPersonInput struct {
-  FirstName  string    `form:"firstname" json:"firstname"`
-  LastName   string    `form:"lastname" json:"lastname"`
+  FirstName  string    `form:"first_name" json:"first_name"`
+  LastName   string    `form:"last_name" json:"last_name"`
   Email      string    `form:"email" json:"email"`
   Phone      string    `form:"phone" json:"phone"`
   Birthday   time.Time `form:"birthday" json:"birthday"`
@@ -44,6 +44,8 @@ type SearchPersonInput struct {
   Department string    `form:"department" json:"department"`
   Self       bool      `form:"self" json:"self"`
 }
+
+
 
 // POST /people
 // Create new person
@@ -132,7 +134,7 @@ func UpdatePerson(c *gin.Context) {
 func DeletePerson(c *gin.Context) {
   // Get model if exist
   var person models.Person
-  if err := models.DB.Where("id = ?", c.Param("id")).First(&person).Error; err != nil {
+  if err := models.DB.First(&person, "id = ?", c.Param("id")).Error; err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
     return
   }

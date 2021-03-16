@@ -27,6 +27,9 @@ func ConnectDatabase() {
   database.AutoMigrate(&Person{})
   database.AutoMigrate(&Meeting{})
   database.AutoMigrate(&Note{})
+  database.AutoMigrate(&Relationship{})
+  database.AutoMigrate(&Attendance{})
+  database.AutoMigrate(&Document{})
 
   DB = database
 }

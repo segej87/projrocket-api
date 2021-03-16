@@ -42,5 +42,23 @@ func main() {
   r.PATCH("/notes/:id", controllers.UpdateNote)
   r.DELETE("/notes/:id", controllers.DeleteNote)
 
+  // Relationships
+  r.GET("/relationships", controllers.FindRelationships)
+  r.POST("/relationships", controllers.CreateRelationship)
+  r.PATCH("/relationships/:id", controllers.UpdateRelationship)
+  r.DELETE("/relationships/:id", controllers.DeleteRelationship)
+
+  // Attendances
+  r.GET("/attendances", controllers.FindAttendances)
+  r.POST("/attendances", controllers.CreateAttendance)
+  r.PATCH("/attendances/:id", controllers.UpdateAttendance)
+  r.DELETE("/attendances/:id", controllers.DeleteAttendance)
+
+  // Documents
+  r.GET("/documents", controllers.FindDocuments)
+  r.POST("/documents", controllers.CreateDocument)
+  r.PATCH("/documents/:id", controllers.UpdateDocument)
+  r.DELETE("/documents/:id", controllers.DeleteDocument)
+
   r.Run()
 }

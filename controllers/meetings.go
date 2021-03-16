@@ -123,7 +123,7 @@ func UpdateMeeting(c *gin.Context) {
 func DeleteMeeting(c *gin.Context) {
   // Get model if exist
   var meeting models.Meeting
-  if err := models.DB.Where("id = ?", c.Param("id")).First(&meeting).Error; err != nil {
+  if err := models.DB.First(&meeting, "id = ?", c.Param("id")).Error; err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
     return
   }
