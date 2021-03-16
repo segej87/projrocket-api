@@ -1,4 +1,4 @@
-// controllers/people.go
+// controllers/meetings.go
 
 package controllers
 
